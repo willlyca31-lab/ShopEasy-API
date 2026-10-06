@@ -4,7 +4,7 @@ const User = require('../src/models/User');
 
 (async () => {
   try {
-    await mongoose.connect(process.env.MONGO_URI);
+    await mongoose.connect(process.env.MONGODB_URI || process.env.MONGO_URI);
     const email = (process.env.ADMIN_EMAIL || 'admin@shopeasy.com').toLowerCase();
     const existing = await User.findOne({ email });
     if (existing) {
