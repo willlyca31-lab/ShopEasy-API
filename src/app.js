@@ -14,11 +14,16 @@ app.use(express.json({ limit: '10kb' }));
 app.use('/api', rateLimit({ windowMs: 15 * 60 * 1000, max: 300 }));
 
 app.get('/', (req, res) => res.json({ message: 'ShopEasy API', docs: '/api-docs' }));
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+app.use(
+  '/api-docs',
+  swaggerUi.serve,
+  swaggerUi.setup(swaggerSpec, { swaggerOptions: { persistAuthorization: true } })
+);
 
 app.use('/api/users', require('./routes/userRoutes'));
 app.use('/api/products', require('./routes/productRoutes'));
 app.use('/api/orders', require('./routes/orderRoutes'));
+app.use('/api/category', require('./routes/categoryRoutes'));
 
 app.use(notFound);
 app.use(errorHandler);
