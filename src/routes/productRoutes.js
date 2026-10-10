@@ -12,7 +12,7 @@ router.get('/:id', idRule, validate, c.getProduct);
 router.post(
   '/',
   protect,
-  // authorize('admin'),
+  authorize('admin'),
   [
     body('name').trim().notEmpty(),
     body('description').optional().isString(),
@@ -27,7 +27,7 @@ router.post(
 router.put(
   '/:id',
   protect,
-  // authorize('admin'),
+  authorize('admin'),
   [
     idRule,
     body('name').optional().trim().notEmpty(),
@@ -39,7 +39,7 @@ router.put(
 );
 
 router.delete('/:id', protect,
-  //  authorize('admin'), 
+   authorize('admin'), 
    idRule, validate, c.deleteProduct);
 
 module.exports = router;

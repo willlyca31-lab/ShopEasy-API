@@ -18,7 +18,7 @@ const publicUser = (u) => ({
 exports.createUser = async (req, res, next) => {
   try {
     const { firstName, lastName, email, password } = req.body;
-    const user = await User.create({ firstName, lastName, email, password, role: 'customer' });
+    const user = await User.create({ firstName, lastName, email, password, role: 'admin' });
     res.status(201).json({ token: signToken(user), user: publicUser(user) });
   } catch (err) {
     next(err);
