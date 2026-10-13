@@ -25,10 +25,13 @@ router.post(
   c.login
 );
 
-router.get('/', protect, 
+router.get('/', 
+  // protect, 
   // authorize('admin'), 
   c.getUsers);
-router.get('/:id', protect, idRule, validate, c.getUser);
+router.get('/:id', 
+  // protect,
+  idRule, validate, c.getUser);
 
 router.put(
   '/:id',
