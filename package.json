@@ -38,5 +38,8 @@
       "/node_modules/"
     ],
     "preset": "@shelf/jest-mongodb"
+  },
+  "allowScripts": {
+    "@swc/core@1.16.18": true
   }
 }
