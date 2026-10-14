@@ -8,15 +8,17 @@ const idRule = param('id').isMongoId().withMessage('Invalid order ID');
 
 const STATUSES = ['pending', 'paid', 'shipped', 'delivered', 'cancelled'];
 
-router.use(protect);
+// router.use(protect);
 
 router.get(
   '/',
-  [query('status').optional().isIn(STATUSES).withMessage(`status must be one of: ${STATUSES.join(', ')}`)],
-  validate,
+  // [query('status').optional().isIn(STATUSES).withMessage(`status must be one of: ${STATUSES.join(', ')}`)],
+  // validate,
   c.getOrders
 );
-router.get('/:id', idRule, validate, c.getOrder);
+router.get('/:id', idRule, 
+  // validate, 
+  c.getOrder);
 
 router.post(
   '/',
