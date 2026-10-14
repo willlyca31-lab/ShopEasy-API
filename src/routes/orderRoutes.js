@@ -26,6 +26,7 @@ router.post(
     body('productId').isMongoId().withMessage('productId must be a valid ID'),
     body('quantity').isInt({ min: 1, max: 1000 }).withMessage('quantity must be an integer between 1 and 1000'),
   ],
+  protect,
   validate,
   c.createOrder
 );
@@ -33,6 +34,7 @@ router.post(
 router.put(
   '/:id',
   [idRule, body('status').isIn(STATUSES).withMessage(`status must be one of: ${STATUSES.join(', ')}`)],
+  protect,
   validate,
   c.updateOrder
 );
