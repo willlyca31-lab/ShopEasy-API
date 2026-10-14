@@ -81,7 +81,7 @@ const ORDERS = [
 ];
 
 // ----------------------------------------------------------------------------
-// Helpers
+// Helpers  },
 // ----------------------------------------------------------------------------
 const log = (...a) => console.log(...a);
 const byName = (name) => Category.findOne({ name }).collation({ locale: 'en', strength: 2 });
