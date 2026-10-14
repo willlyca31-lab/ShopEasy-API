@@ -39,6 +39,8 @@ router.put(
   c.updateOrder
 );
 
-router.delete('/:id', authorize('admin'), idRule, validate, c.deleteOrder);
+router.delete('/:id', 
+  // authorize('admin'), 
+  idRule, validate, c.deleteOrder);
 
 module.exports = router;
