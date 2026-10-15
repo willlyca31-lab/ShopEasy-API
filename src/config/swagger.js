@@ -28,6 +28,7 @@ module.exports = {
     { name: 'Category', description: 'Product categories (writes are admin only)' },
   ],
   components: {
+    OAuth2: {type: "oauth2", flows: { authorization: {authorizationUrl: "/auth/google", tokenUrl: "/auth/token"}}},
     securitySchemes: { bearerAuth: { type: 'http', scheme: 'bearer', bearerFormat: 'JWT' } },
 
     responses: {

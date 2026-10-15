@@ -10,12 +10,12 @@ passport.use(
     {
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      callbackURL: process.env.GOOGLE_REDIRECT_URI,
+      callbackURL: process.env.GOOGLE_REDIRECT_URI || "http://localhost:3000/auth/google/callback",
     },
     async (accessToken, refreshToken, profile, done) => {
 
       try {
-        let user = await mongodb.getDb().db('test').collection('Users').findOne({ 'googleId': profile.id });
+        let user = await User.findOne({ 'googleId': profile.id });
         
         if (!user) {
           user = await User.insertOne({
